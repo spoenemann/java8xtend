@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package xtend.examples;
+package xtend.examples.data;
 
 import java.time.LocalDate;
 import java.time.Period;

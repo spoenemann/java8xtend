@@ -5,35 +5,18 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package xtend.examples
+package xtend.examples.data
 
-import java.time.LocalDate
-import java.time.Period
 import org.eclipse.xtend.lib.annotations.Data
 
 /**
  * Data structure for demonstrating the usage of Xtend with Java 8.
  * The examples have been taken from The Java Tutorials:
- * http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html
+ * http://docs.oracle.com/javase/tutorial/collections/streams/QandE/questions.html
  */
 @Data
-class Person {
-
-    public enum Sex {
-        MALE, FEMALE
-    }
-
-    String name;
-    LocalDate birthday;
-    Sex gender;
-    String emailAddress;
-
-    def getAge() {
-        Period.between(birthday, LocalDate.now).years
-    }
-
-    def printPerson() {
-        println(toString)
-    }
-    
+class Track {
+	
+	int rating
+	
 }
