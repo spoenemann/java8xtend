@@ -130,13 +130,14 @@ class Demo {
 		    .toList
 		println('namesOfMaleMembersXtend = ' + namesOfMaleMembersXtend)
 		
-		// Exercise 2
+		// Exercise 2 (see JavaExample.example2)
 		val albums = <Album>newArrayList
-		val favs1 = albums.filter[tracks.exists[rating >= 4]].sortBy[name]
-		val favs2 = albums.stream.filter[tracks.stream.anyMatch[rating >= 4]]
-				.sorted(Comparator.<Album, String>comparing[name])
-				.collect(Collectors.toList)
-		use(favs1, favs2)
+		val sortedFavs = albums.stream
+		        .filter[tracks.stream.anyMatch[rating >= 4]]
+		        .sorted(Comparator.<Album, String>comparing[name])
+		        .collect(Collectors.toList)
+		val sortedFavsXtend = albums.filter[tracks.exists[rating >= 4]].sortBy[name]
+		use(sortedFavs, sortedFavsXtend)
 	}
 	
 	/**

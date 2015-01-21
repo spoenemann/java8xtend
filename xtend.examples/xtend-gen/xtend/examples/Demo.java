@@ -275,38 +275,38 @@ public class Demo {
     final List<String> namesOfMaleMembersXtend = IterableExtensions.<String>toList(_map_5);
     InputOutput.<String>println(("namesOfMaleMembersXtend = " + namesOfMaleMembersXtend));
     final ArrayList<Album> albums = CollectionLiterals.<Album>newArrayList();
-    final Function1<Album, Boolean> _function_29 = (Album it) -> {
-      Collection<Track> _tracks = it.getTracks();
-      final Function1<Track, Boolean> _function_30 = (Track it_1) -> {
-        int _rating = it_1.getRating();
-        return Boolean.valueOf((_rating >= 4));
-      };
-      return Boolean.valueOf(IterableExtensions.<Track>exists(_tracks, _function_30));
-    };
-    Iterable<Album> _filter_6 = IterableExtensions.<Album>filter(albums, _function_29);
-    final Function1<Album, String> _function_30 = (Album it) -> {
-      return it.getName();
-    };
-    final List<Album> favs1 = IterableExtensions.<Album, String>sortBy(_filter_6, _function_30);
     Stream<Album> _stream_8 = albums.stream();
-    final Predicate<Album> _function_31 = (Album it) -> {
+    final Predicate<Album> _function_29 = (Album it) -> {
       Collection<Track> _tracks = it.getTracks();
       Stream<Track> _stream_9 = _tracks.stream();
-      final Predicate<Track> _function_32 = (Track it_1) -> {
+      final Predicate<Track> _function_30 = (Track it_1) -> {
         int _rating = it_1.getRating();
         return (_rating >= 4);
       };
-      return _stream_9.anyMatch(_function_32);
+      return _stream_9.anyMatch(_function_30);
     };
-    Stream<Album> _filter_7 = _stream_8.filter(_function_31);
-    final Function<Album, String> _function_32 = (Album it) -> {
+    Stream<Album> _filter_6 = _stream_8.filter(_function_29);
+    final Function<Album, String> _function_30 = (Album it) -> {
       return it.getName();
     };
-    Comparator<Album> _comparing = Comparator.<Album, String>comparing(_function_32);
-    Stream<Album> _sorted = _filter_7.sorted(_comparing);
+    Comparator<Album> _comparing = Comparator.<Album, String>comparing(_function_30);
+    Stream<Album> _sorted = _filter_6.sorted(_comparing);
     Collector<Album, ?, List<Album>> _list_2 = Collectors.<Album>toList();
-    final List<Album> favs2 = _sorted.collect(_list_2);
-    Demo.use(favs1, favs2);
+    final List<Album> sortedFavs = _sorted.collect(_list_2);
+    final Function1<Album, Boolean> _function_31 = (Album it) -> {
+      Collection<Track> _tracks = it.getTracks();
+      final Function1<Track, Boolean> _function_32 = (Track it_1) -> {
+        int _rating = it_1.getRating();
+        return Boolean.valueOf((_rating >= 4));
+      };
+      return Boolean.valueOf(IterableExtensions.<Track>exists(_tracks, _function_32));
+    };
+    Iterable<Album> _filter_7 = IterableExtensions.<Album>filter(albums, _function_31);
+    final Function1<Album, String> _function_32 = (Album it) -> {
+      return it.getName();
+    };
+    final List<Album> sortedFavsXtend = IterableExtensions.<Album, String>sortBy(_filter_7, _function_32);
+    Demo.use(sortedFavs, sortedFavsXtend);
   }
   
   /**
