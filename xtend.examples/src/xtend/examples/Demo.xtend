@@ -102,7 +102,7 @@ class Demo {
 	            Collectors.groupingBy(
 	                [gender],
 	                Collectors.mapping(
-	                    [Person p | p.name],
+	                    [name],
 	                    Collectors.toList)))
 		println('namesByGender = ' + namesByGender)
 		val totalAgeByGender = roster
@@ -110,7 +110,7 @@ class Demo {
 	        .collect(
 	            Collectors.groupingBy(
 	                [gender],                      
-	                Collectors.<Person, Integer>reducing(
+	                Collectors.reducing(
 	                    0,
 	                    [age],
 	                    [$0 + $1])))
@@ -120,7 +120,7 @@ class Demo {
 		    .collect(
 		        Collectors.groupingBy(
 		            [gender],                      
-		            Collectors.<Person>averagingInt[age]))
+		            Collectors.averagingInt[age]))
 		println('averageAgeByGender = ' + averageAgeByGender)
 		
 		println('---Same result using Xtend library')
@@ -134,7 +134,7 @@ class Demo {
 		val albums = <Album>newArrayList
 		val sortedFavs = albums.stream
 		        .filter[tracks.stream.anyMatch[rating >= 4]]
-		        .sorted(Comparator.<Album, String>comparing[name])
+		        .sorted(Comparator.comparing[name])
 		        .collect(Collectors.toList)
 		val sortedFavsXtend = albums.filter[tracks.exists[rating >= 4]].sortBy[name]
 		use(sortedFavs, sortedFavsXtend)

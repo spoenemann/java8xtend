@@ -228,8 +228,8 @@ public class Demo {
     final Function<Person, Person.Sex> _function_20 = (Person it) -> {
       return it.getGender();
     };
-    final Function<Person, String> _function_21 = (Person p) -> {
-      return p.getName();
+    final Function<Person, String> _function_21 = (Person it) -> {
+      return it.getName();
     };
     Collector<String, ?, List<String>> _list_1 = Collectors.<String>toList();
     Collector<Person, ?, List<String>> _mapping = Collectors.mapping(_function_21, _list_1);
